@@ -65,29 +65,52 @@ namespace Bartek_Oleszek_Zadanie1
 
         private void oblicz1_Click(object sender, EventArgs e)
         {
-            String s = textBox1.Text;
-            double x1 = Convert.ToDouble(s);
-            s = textBox2.Text;
-            double x2 = Convert.ToDouble(s);
-            int potega = losuj();
-            int n = 10;
-            double wynik;
-            double suma=0;
-
-            for(int i=1;i<=potega;i++)
+            try
             {
-                n=n*10;
-            }
-            double calkaPT = mTrapezow(x1, x2, n);
+                String s = textBox1.Text;
+                double x1 = Convert.ToDouble(s);
+                s = textBox2.Text;
+                double x2 = Convert.ToDouble(s);
 
-            for (int i=0;i<n;i++)
-            {
-                wynik = mTrapezow(x1, x2, n);
-                suma += (wynik - calkaPT) * (wynik - calkaPT);
-               
+                if (x1 > 100 || x2 > 100)
+                {
+                    throw new Exception("x1 i x2 muszą być z przedziału 0 do 100");
+                }
+                int n = 10;
+                int potega = losuj();
+
+                for (int i = 1; i < potega; i++)
+                {
+                    n = n * 10;
+                }
+                double wynik;
+                double sumaT = 0, sumaP = 0;
+
+                double calkaPT = mTrapezow(x1, x2, 100000);
+                double calkaPP = mProstokatow(x1, x2, 100000);
+
+                for (int i = 0; i < n; i++)
+                {
+                    wynik = mTrapezow(x1, x2, n);
+                    sumaT += (wynik - calkaPT) * (wynik - calkaPT);
+
+                }
+                sumaT /= n;
+
+                for (int i = 0; i < n; i++)
+                {
+                    wynik = mProstokatow(x1, x2, n);
+                    sumaP += (wynik - calkaPP) * (wynik - calkaPP);
+                }
+                sumaP /= n;
+                //textBox3.Text = ("Błąd średniokwadratowy dla metody trapezowej: " + (sumaT) + ", \n dla metody prostokątnej: " + (sumaP));
             }
-            suma/=n;
-            textBox3.Text = ("Blad sredniokwadratowy : " + (suma));
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void Powrót_Click(object sender, EventArgs e)
@@ -108,6 +131,42 @@ namespace Bartek_Oleszek_Zadanie1
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

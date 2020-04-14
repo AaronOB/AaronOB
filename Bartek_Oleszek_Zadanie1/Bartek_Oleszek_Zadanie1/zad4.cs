@@ -59,44 +59,73 @@ namespace Bartek_Oleszek_Zadanie1
 
         private void oblicz1_Click(object sender, EventArgs e)
         {
-            String s = textBox1.Text;
-            double x1 = Convert.ToDouble(s);
-            s = textBox2.Text;
-            double x2 = Convert.ToDouble(s);
-            s = textBox3.Text;
-            double k = Convert.ToDouble(s);
-            s = textBox4.Text;
-            double z = Convert.ToDouble(s);
-
-            int n = 10;
-            for (int j= 1; j <= k; j++)
+            try
             {
-                n = n * 10;
-            }
-            double wynik;
+                String s = textBox1.Text;
+                int x1 = Convert.ToInt32(s);
+                s = textBox2.Text;
+                int x2 = Convert.ToInt32(s);
+                s = textBox3.Text;
+                double k = Convert.ToDouble(s);
+                s = textBox4.Text;
+                double z = Convert.ToDouble(s);
 
-            bool t = true;
-            int i = 1;
-
-            while (t)
-            {
-                wynik = mTrapezow(x1, x2, n - i);
-                if ((Math.Truncate(wynik) % z) == 0)
+                int n = 10;
+                for (int j = 1; j <= k; j++)
                 {
-                    textBox5.Text = ("x1: " +x1+"  ,x2: "+x2);
-                    t = false;
+                    n = n * 10;
                 }
-                i++;
-            }
-            while (t)
-            {
-                wynik = mProstokatow(x1, x2, n - i);
-                if ((Math.Truncate(wynik) % z) == 0)
+                double wynik;
+
+                bool t = true;
+
+                int x1T = x1;
+                int x2T = x2;
+
+                int x1P = x1;
+                int x2P = x2;
+
+                while (t)
                 {
-                    textBox5.Text = ("x1: " + x1 + "  ,x2: " + x2);
-                    t = false;
+
+                    for (int j = x1T + 1; j <= 100 && t == true; j++)
+                    {
+                        x2T = j;
+                        wynik = mTrapezow(x1T, x2T, n);
+                        if ((Math.Truncate(wynik) % z) == 0)
+                        {
+                            t = false;
+                        }
+                        j++;
+
+                    }
+                    x1T++;
+
                 }
-                i++;
+
+                t = true;
+                while (t)
+                {
+
+                    for (int j = x1P + 1; j <= 100 && t == true; j++)
+                    {
+                        x2P = j;
+                        wynik = mProstokatow(x1P, x2P, n);
+                        if ((Math.Truncate(wynik) % z) == 0)
+                        {
+                            t = false;
+                        }
+                        j++;
+                    }
+                    x1P++;
+                }
+
+                textBox5.Text = ("Dla metody trapezowej x1: " + (x1T - 1) + "  ,x2: " + x2T + " ,\n dla metody prostokątów x1: " + (x1P - 1) + "  ,x2: " + x2P);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -108,6 +137,63 @@ namespace Bartek_Oleszek_Zadanie1
         }
 
         private void zad4_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }

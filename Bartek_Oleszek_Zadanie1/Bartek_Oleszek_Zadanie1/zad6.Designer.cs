@@ -34,44 +34,51 @@
             this.label4 = new System.Windows.Forms.Label();
             this.oblicz1 = new System.Windows.Forms.Button();
             this.Powrot = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(177, 71);
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox2.Location = new System.Drawing.Point(177, 60);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(100, 23);
             this.textBox2.TabIndex = 25;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(177, 26);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox1.Location = new System.Drawing.Point(177, 15);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
             this.textBox1.TabIndex = 24;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 79);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(25, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.Size = new System.Drawing.Size(121, 17);
             this.label3.TabIndex = 23;
-            this.label3.Text = "Podaj wartosc m";
+            this.label3.Text = "Podaj wartosc \'m\':";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 33);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(25, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.Size = new System.Drawing.Size(117, 17);
             this.label4.TabIndex = 22;
-            this.label4.Text = "Podaj wartosc k";
+            this.label4.Text = "Podaj wartosc\' k\':";
             // 
             // oblicz1
             // 
-            this.oblicz1.Location = new System.Drawing.Point(28, 107);
+            this.oblicz1.Location = new System.Drawing.Point(25, 105);
             this.oblicz1.Name = "oblicz1";
             this.oblicz1.Size = new System.Drawing.Size(75, 23);
             this.oblicz1.TabIndex = 20;
@@ -81,7 +88,7 @@
             // 
             // Powrot
             // 
-            this.Powrot.Location = new System.Drawing.Point(177, 107);
+            this.Powrot.Location = new System.Drawing.Point(177, 105);
             this.Powrot.Name = "Powrot";
             this.Powrot.Size = new System.Drawing.Size(75, 23);
             this.Powrot.TabIndex = 26;
@@ -89,20 +96,22 @@
             this.Powrot.UseVisualStyleBackColor = true;
             this.Powrot.Click += new System.EventHandler(this.Powrot_Click);
             // 
-            // listBox1
+            // textBox3
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(30, 164);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(247, 95);
-            this.listBox1.TabIndex = 27;
+            this.textBox3.Location = new System.Drawing.Point(28, 170);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(344, 117);
+            this.textBox3.TabIndex = 27;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // zad6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 361);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.Powrot);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -125,6 +134,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button oblicz1;
         private System.Windows.Forms.Button Powrot;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

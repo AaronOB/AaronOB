@@ -57,25 +57,33 @@ namespace Bartek_Oleszek_Zadanie1
 
         private void oblicz1_Click(object sender, EventArgs e)
         {
-            String s = textBox1.Text;
-            double z = Convert.ToDouble(s);
-            int n1 = 10000;
-            double calkaPT = mTrapezow(0, Math.PI/2, n1);
-            double area = Math.Abs(calkaPT % z);
-            double wynik;
-
-            bool t = true;
-            int i = 1;
-
-            while (t)
+            try
             {
-                wynik = mTrapezow(0, Math.PI/2, n1 - i);
-                if (Math.Abs(wynik - calkaPT) > area)
+                String s = textBox1.Text;
+                double z = Convert.ToDouble(s);
+                int n1 = 10000;
+                double calkaPT = mTrapezow(0, Math.PI / 2, n1);
+                double area = Math.Abs(calkaPT % z);
+                double wynik;
+
+                bool t = true;
+                int i = 1;
+
+                while (t)
                 {
-                    textBox2.Text = ("Najmniejsze n wynosi: " + (n1 - i + 1));
-                    t = false;
+                    wynik = mTrapezow(0, Math.PI / 2, n1 - i);
+                    if (Math.Abs(wynik - calkaPT) > area)
+                    {
+                        textBox2.Text = ("Najmniejsze n wynosi: " + (n1 - i + 1));
+                        t = false;
+                    }
+                    i++;
                 }
-                i++;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -92,6 +100,24 @@ namespace Bartek_Oleszek_Zadanie1
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -37,7 +37,7 @@
             // 
             // oblicz1
             // 
-            this.oblicz1.Location = new System.Drawing.Point(27, 72);
+            this.oblicz1.Location = new System.Drawing.Point(25, 50);
             this.oblicz1.Name = "oblicz1";
             this.oblicz1.Size = new System.Drawing.Size(75, 23);
             this.oblicz1.TabIndex = 10;
@@ -47,24 +47,26 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(176, 20);
+            this.textBox2.Location = new System.Drawing.Point(177, 15);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 9;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 28);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(25, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(117, 17);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Podaj wartosc z";
+            this.label2.Text = "Podaj wartosc \'z\':";
             // 
             // Powrot
             // 
-            this.Powrot.Location = new System.Drawing.Point(176, 72);
+            this.Powrot.Location = new System.Drawing.Point(177, 50);
             this.Powrot.Name = "Powrot";
             this.Powrot.Size = new System.Drawing.Size(75, 23);
             this.Powrot.TabIndex = 11;
@@ -74,9 +76,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(27, 124);
+            this.textBox1.Location = new System.Drawing.Point(25, 100);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(249, 20);
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(249, 61);
             this.textBox1.TabIndex = 12;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 

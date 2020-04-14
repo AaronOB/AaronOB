@@ -39,7 +39,7 @@
             // 
             // oblicz1
             // 
-            this.oblicz1.Location = new System.Drawing.Point(28, 116);
+            this.oblicz1.Location = new System.Drawing.Point(25, 100);
             this.oblicz1.Name = "oblicz1";
             this.oblicz1.Size = new System.Drawing.Size(75, 23);
             this.oblicz1.TabIndex = 10;
@@ -49,39 +49,45 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(177, 64);
+            this.textBox2.Location = new System.Drawing.Point(177, 60);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 9;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(177, 19);
+            this.textBox1.Location = new System.Drawing.Point(177, 15);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 8;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 72);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(25, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.Size = new System.Drawing.Size(124, 17);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Podaj wartosc x2";
+            this.label2.Text = "Podaj wartosc \'x2\':";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 27);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(25, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.Size = new System.Drawing.Size(124, 17);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Podaj wartosc x1";
+            this.label1.Text = "Podaj wartosc \'x1\':";
             // 
             // Powrót
             // 
-            this.Powrót.Location = new System.Drawing.Point(177, 116);
+            this.Powrót.Location = new System.Drawing.Point(177, 100);
             this.Powrót.Name = "Powrót";
             this.Powrót.Size = new System.Drawing.Size(75, 23);
             this.Powrót.TabIndex = 12;
@@ -92,8 +98,10 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(28, 178);
+            this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(249, 20);
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(249, 104);
             this.textBox3.TabIndex = 13;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 

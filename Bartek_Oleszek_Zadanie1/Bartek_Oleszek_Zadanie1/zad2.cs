@@ -58,26 +58,48 @@ namespace Bartek_Oleszek_Zadanie1
 
         private void oblicz1_Click(object sender, EventArgs e)
         {
-            String s = textBox2.Text;
-            double z = Convert.ToDouble(s);
-            int n1 = 10000;
-            double calkaPT = mTrapezow(0, 100, n1);
-            double area = Math.Abs(calkaPT % z);
-            double wynik;
-
-            bool t = true;
-            int i = 1;
-
-            while (t)
+            try
             {
-                wynik = mTrapezow(0, 100, n1-i);
-                if (Math.Abs(wynik - calkaPT) >area)
+
+                String s = textBox2.Text;
+                double z = Convert.ToDouble(s);
+                int n1 = 10000;
+                double calkaPT = mTrapezow(0, 100, n1);
+                double calkaPP = mProstokatow(0, 100, n1);
+                double area = Math.Abs(calkaPT % z);
+                double area2 = Math.Abs(calkaPP % z);
+                double wynik;
+
+                bool t = true;
+                int i = 1, j = 1; ;
+
+                while (t)
                 {
-                    textBox1.Text = ("Najmniejsze n wynosi: "+(n1-i+1));
-                    t = false;
+                    wynik = mTrapezow(0, 100, i);
+                    if (wynik >= calkaPT - area && wynik <= calkaPT + area)
+                    {
+                        t = false;
+                    }
+                    i++;
                 }
-                i++;
+
+                while (t)
+                {
+                    wynik = mProstokatow(0, 100, j);
+                    if (wynik >= calkaPP - area2 && wynik <= calkaPP + area2)
+                    {
+                        t = false;
+                    }
+                    j++;
+                }
+                textBox1.Text = ("Najmniejsze 'n' dla metody trapezowej wynosi: " + (i) + " ,a dla metody prostokątnej wynosi: " + (j));
             }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void Powrót_Click(object sender, EventArgs e)
@@ -101,6 +123,19 @@ namespace Bartek_Oleszek_Zadanie1
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -44,16 +44,18 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zadaniaZToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(284, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(334, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // zadaniaZToolStripMenuItem
             // 
+            this.zadaniaZToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlLight;
             this.zadaniaZToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zad1Menu,
             this.zad2Menu,
@@ -64,8 +66,9 @@
             this.zad7Menu,
             this.zad8Menu,
             this.wyjscieToolStripMenuItem});
+            this.zadaniaZToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.zadaniaZToolStripMenuItem.Name = "zadaniaZToolStripMenuItem";
-            this.zadaniaZToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.zadaniaZToolStripMenuItem.Size = new System.Drawing.Size(248, 23);
             this.zadaniaZToolStripMenuItem.Text = "Zadania z całkowania numerycznego ";
             // 
             // zad1Menu
@@ -135,11 +138,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.BackColor = System.Drawing.SystemColors.GrayText;
+            this.ClientSize = new System.Drawing.Size(334, 311);
             this.Controls.Add(this.menuStrip1);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Metody_Numeryczne";
-            this.Text = "Form1";
+            this.Text = "Zadania ";
+            this.TransparencyKey = System.Drawing.Color.Black;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

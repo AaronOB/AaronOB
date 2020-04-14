@@ -72,45 +72,70 @@ namespace Bartek_Oleszek_Zadanie1
         {
             Global g;
             SingleCount sc;
+            String s;
+            int m=10;
 
-            String s = textBox1.Text;
-            int m= Convert.ToInt16(s);
-            s = textBox2.Text;
-            double z = Convert.ToDouble(s);
-            // textBox3.Text = Convert.ToString(m + z);
-            int n = losuj();
-            double calkaPT = mTrapezow(0, 100, n);
-            double calkaPP = mProstokatow(0, 100, n);
-            double area = Math.Abs(calkaPT % z);
-            double wynik;
-            List<SingleCount> listaP = new List<SingleCount>();
-            for (int i = 0; i < m; i++)
+            try
             {
-                wynik=mTrapezow(0, 100, m);
-                sc = new SingleCount(0, 100, n, AreaType.Trapezoid, area, wynik);
-               if(wynik<=calkaPT+area && wynik >= calkaPT - area)
+                s = textBox1.Text;
+                m = Convert.ToInt16(s);
+
+                if (m > 100)
                 {
-                    listaP.Add(sc);
+                    throw new Exception("Podaj liczbę 'm' mniejszą od 100");
                 }
-            }
 
-            for (int i = 0; i < m; i++)
-            {
-                wynik = mProstokatow(0, 100, m);
-                sc = new SingleCount(0, 100, n, AreaType.Trapezoid, area, wynik);
-                if (wynik <= calkaPP + area && wynik >= calkaPP - area)
+                else
                 {
-                    listaP.Add(sc);
+                    s = textBox2.Text;
+                    double z = Convert.ToDouble(s);
+
+                    int n = losuj();
+                    double calkaPT = mTrapezow(0, 100, n);
+                    double calkaPP = mProstokatow(0, 100, n);
+                    double area = Math.Abs(calkaPT % z);
+                    double wynik;
+                    List<SingleCount> listaP = new List<SingleCount>();
+                    for (int i = 0; i < m; i++)
+                    {
+                        n = losuj();
+                        wynik = mTrapezow(0, 100, n);
+                        sc = new SingleCount(0, 100, n, AreaType.Trapezoid, area, wynik);
+                        if (wynik <= calkaPT + area && wynik >= calkaPT - area)
+                        {
+                            listaP.Add(sc);
+                        }
+
+
+                    }
+
+                    for (int i = 0; i < m; i++)
+                    {
+                        n = losuj();
+                        wynik = mProstokatow(0, 100, n);
+                        sc = new SingleCount(0, 100, n, AreaType.Rectangle, area, wynik);
+                        if (wynik <= calkaPP + area && wynik >= calkaPP - area)
+                        {
+                            listaP.Add(sc);
+                        }
+                    }
+
+                    g = new Global(listaP);
+
+                    for (int i = 0; i < g.ListOfSingleCount.Count; i++)
+                    {
+                        listBox1.Items.Add("Wynik: " + g.ListOfSingleCount[i].calculationNumber.ToString() + "   , metoda: " + g.ListOfSingleCount[i].areaType.ToString());
+
+                    }
                 }
-            }
 
-            g = new Global(listaP);
-            
-            for(int i=0;i<g.ListOfSingleCount.Count;i++)
+            }
+            catch (Exception ex)
             {
-                listBox1.Items.Add("Wynik" + g.ListOfSingleCount[i].ToString()+"  ,metoda: "+g.ListOfSingleCount[i].areaType.ToString());
-
+                MessageBox.Show(ex.Message);
             }
+
+           
 
         }
 
@@ -149,6 +174,32 @@ namespace Bartek_Oleszek_Zadanie1
         private void zad1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
